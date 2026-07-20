@@ -1,6 +1,9 @@
+import Header from "@/components/Header";
 export default function OdontologiaInfantil() {
   return (
     <main className="min-h-screen bg-gradient-to-b from-cyan-50 via-white to-white">
+
+      <Header />{/* <Header /> */}
 
       <section className="max-w-6xl mx-auto px-6 py-16">
 
