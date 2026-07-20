@@ -1,35 +1,27 @@
 import ServiceCard from "./ServiceCard";
+import { tratamientos } from "@/data/tratamientos";
 
 export default function Services() {
   return (
     <section className="max-w-6xl mx-auto px-6 py-20">
 
-      <h2 className="text-4xl font-bold text-center text-gray-800 mb-12">
+      <h2 className="mb-12 text-center text-4xl font-bold text-gray-800">
         Nuestros Servicios
       </h2>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
 
-        <ServiceCard
-          emoji="👶"
-          title="Odontología Infantil"
-          description="Atención especializada para bebés, niños y adolescentes."
-          href="/odontologia-infantil"
-        />
+        {tratamientos.map((tratamiento) => (
 
-        <ServiceCard
-          emoji="✨"
-          title="Odontología Preventiva"
-          description="Prevención de caries mediante revisiones, limpieza y aplicación de flúor."
-          href="/prevencion"
-        />
+          <ServiceCard
+            key={tratamiento.id}
+            emoji={tratamiento.emoji}
+            title={tratamiento.nombre}
+            description={tratamiento.descripcion}
+            href={tratamiento.ruta}
+          />
 
-        <ServiceCard
-          emoji="😁"
-          title="Ortopedia Maxilar"
-          description="Guiamos el crecimiento y desarrollo adecuado de los maxilares."
-          href="/ortopedia"
-        />
+        ))}
 
       </div>
 

@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { tratamientos } from "@/data/tratamientos";
 
 export default function SearchBar() {
@@ -12,7 +13,6 @@ export default function SearchBar() {
 
   return (
     <div className="mx-auto mb-12 max-w-3xl">
-
       <input
         type="text"
         placeholder="🔍 Buscar tratamiento..."
@@ -22,37 +22,30 @@ export default function SearchBar() {
       />
 
       {busqueda && (
-        <div className="mt-4 rounded-2xl bg-white shadow-lg">
-
+        <div className="mt-4 overflow-hidden rounded-2xl bg-white shadow-lg">
           {resultados.length > 0 ? (
-
             resultados.map((tratamiento) => (
-
-              <div
+              <Link
                 key={tratamiento.id}
-                className="border-b p-4 hover:bg-cyan-50"
+                href={tratamiento.ruta}
+                className="block border-b p-4 transition hover:bg-cyan-50"
               >
-                <h3 className="font-bold">
+                <h3 className="font-bold text-cyan-700">
                   {tratamiento.nombre}
                 </h3>
 
                 <p className="text-gray-500">
                   {tratamiento.descripcion}
                 </p>
-              </div>
-
+              </Link>
             ))
-
           ) : (
-
             <p className="p-4 text-gray-500">
               No se encontraron tratamientos.
             </p>
-
           )}
         </div>
       )}
-
     </div>
   );
 }
